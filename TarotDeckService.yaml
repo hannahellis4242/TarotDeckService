@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  version: "1"
+  title: Tarot Deck Service
+  description: A service for tarot card readings
+servers:
+  - url: "http://deck:8080"
+paths:
+  /card/{cardId}:
+    get:
+      summary: retreive information about a card
+      operationId: getCard
+      description: gives information about a card with the given index
+      parameters:
+        - in: path
+          name: cardId
+          description: the number of the card
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: details about the card
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Card"
+        "404":
+          description: card with given id not found
+  /deck:
+    get:
+      summary: get a generated deck
+      operationId: getDeck
+      description: >-
+        - gives back
+      parameters:
+        - in: query
+          name: seed
+          description: a seed for the random number generator, if not present then will seed based on the time the call was made
+          schema:
+            type: string
+        - in: query
+          name: number
+          description: number of cards to draw, if not pressent then will generate a full deck
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: a list of cards plus details about the call
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  time:
+                    type: number
+                  deck:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Card"
+        "400":
+          description: if a number was given, then the number that was given is invalid
+components:
+  schemas:
+    Card:
+      type: object
+      required:
+        - CardId
+        - Pip
+      properties:
+        CardId:
+          type: integer
+        Pip:
+          type: string
+        Suit:
+          type: string
