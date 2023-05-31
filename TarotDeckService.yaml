@@ -32,7 +32,7 @@ paths:
       summary: get a generated deck
       operationId: getDeck
       description: >-
-        - gives back
+        - gives back a shuffled deck
       parameters:
         - in: query
           name: seed
@@ -40,7 +40,7 @@ paths:
           schema:
             type: string
         - in: query
-          name: number
+          name: num
           description: number of cards to draw, if not pressent then will generate a full deck
           schema:
             type: integer
@@ -52,6 +52,8 @@ paths:
               schema:
                 type: object
                 properties:
+                  seed:
+                    type: string
                   time:
                     type: number
                   deck:
@@ -62,15 +64,61 @@ paths:
           description: if a number was given, then the number that was given is invalid
 components:
   schemas:
+    Suit:
+      type: string
+      enum:
+        - Wands
+        - Cups
+        - Swords
+        - Pentacles
+    Pip:
+      type: string
+      enum:
+        - 0 The Fool
+        - I The Magician
+        - II The High Priestess
+        - III The Empress
+        - IV The Emperor
+        - V The Hierophant
+        - VI The Lovers
+        - VII The Chariot
+        - VIII Strength
+        - IX The Hermit
+        - X The Wheel of Fortune
+        - XI Justice
+        - XII The Hanged Man
+        - XIII Death
+        - XIV Temperance
+        - XV The Devil
+        - XVI The Tower
+        - XVII The Star
+        - XVIII The Moon
+        - XIX The Sun
+        - XX Judgement
+        - XXI The World
+        - Ace
+        - Two
+        - Three
+        - Four
+        - Five
+        - Six
+        - Seven
+        - Eight
+        - Nine
+        - Ten
+        - Page
+        - Knight
+        - Queen
+        - King
     Card:
       type: object
       required:
-        - CardId
-        - Pip
+        - id
+        - pip
       properties:
-        CardId:
+        id:
           type: integer
-        Pip:
-          type: string
-        Suit:
-          type: string
+        pip:
+          $ref: "#/components/schemas/Pip"
+        suit:
+          $ref: "#/components/schemas/Suit"
