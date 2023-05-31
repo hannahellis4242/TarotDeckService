@@ -122,3 +122,5 @@ components:
           $ref: "#/components/schemas/Pip"
         suit:
           $ref: "#/components/schemas/Suit"
+        reversed:
+          type: boolean
