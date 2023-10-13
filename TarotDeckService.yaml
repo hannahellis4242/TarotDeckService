@@ -18,6 +18,8 @@ paths:
           required: true
           schema:
             type: integer
+            minimum: 0
+            maximum: 77
       responses:
         "200":
           description: details about the card
@@ -43,6 +45,8 @@ paths:
           description: number of cards to draw, if not pressent then will generate a full deck
           schema:
             type: integer
+            minimum: 1
+            maximum: 78
       responses:
         "200":
           description: a list of cards plus details about the call
