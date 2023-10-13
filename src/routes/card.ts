@@ -9,7 +9,7 @@ cardRouter.get("/:cardId", (req, res) => {
   if (!result.success) {
     res
       .status(StatusCodes.BAD_REQUEST)
-      .send(result.error.issues.map((issue) => `${issue}`).join("\n"));
+      .send(result.error.issues.map(({ message }) => message).join("\n"));
     return;
   }
   const card = cards.at(result.data);
