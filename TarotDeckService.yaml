@@ -31,8 +31,7 @@ paths:
     get:
       summary: get a generated deck
       operationId: getDeck
-      description: >-
-        - gives back a shuffled deck
+      description: gives back a shuffled deck using the specified seed if one is given and with the number of cards in the deck when specified
       parameters:
         - in: query
           name: seed
