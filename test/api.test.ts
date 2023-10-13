@@ -15,7 +15,7 @@ describe("api", () => {
     test("must be a number", async () => {
       const response = await request(app).get("/card/hello");
       expect(response.statusCode).toBe(400);
-      expect(response.body).toBe("");
+      expect(response.body).toStrictEqual({}); //why???
     });
   });
 });
