@@ -6,10 +6,20 @@ info:
 servers:
   - url: "http://deck:8080"
 paths:
+  /card:
+    get:
+      summary: retreive information about a card
+      description: gives information about a card with the given index
+      responses:
+        "400":
+          description: bad request
+          content:
+            text/plain:
+              schema:
+                type: string
   /card/{cardId}:
     get:
       summary: retreive information about a card
-      operationId: getCard
       description: gives information about a card with the given index
       parameters:
         - in: path
@@ -27,6 +37,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Card"
+        "400":
+          description: bad request
+          content:
+            text/plain:
+              schema:
+                type: string
         "404":
           description: card with given id not found
   /deck:
@@ -64,7 +80,11 @@ paths:
                     items:
                       $ref: "#/components/schemas/Card"
         "400":
-          description: if a number was given, then the number that was given is invalid
+          description: bad request
+          content:
+            text/plain:
+              schema:
+                type: string
 components:
   schemas:
     Suit:
