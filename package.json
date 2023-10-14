@@ -4,6 +4,7 @@
   "description": "Service to generate tarot decks",
   "main": "dist/main.js",
   "scripts": {
+    "test": "jest",
     "build": "tsc",
     "watch": "tsc -w",
     "dev": "nodemon dist/main.js"
@@ -14,11 +15,16 @@
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/http-status-codes": "^1.2.0",
+    "@types/jest": "^29.5.5",
     "@types/morgan": "^1.9.4",
     "@types/node": "^20.2.5",
+    "@types/supertest": "^2.0.14",
+    "jest": "^29.7.0",
     "nodemon": "^2.0.22",
     "openapi-typescript-codegen": "^0.24.0",
-    "typescript": "^5.0.4"
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "express": "^4.18.2",

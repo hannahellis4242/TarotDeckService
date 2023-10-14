@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const CardIdSchema = z
+export const CardIdSchema = z.coerce
   .number({
     invalid_type_error: "card id must be a number",
     required_error: "must give a card id",
