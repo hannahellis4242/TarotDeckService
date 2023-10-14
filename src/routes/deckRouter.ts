@@ -2,7 +2,6 @@ import { Router } from "express";
 import cards from "../model/Cards";
 import { StatusCodes } from "http-status-codes";
 import { MersenneTwister19937, bool, shuffle } from "random-js";
-import { Hash } from "crypto";
 import stringToSeedArray from "../utils/stringToSeedArray";
 import Card from "../model/Card";
 import { DrawSchema } from "../model/Draw";

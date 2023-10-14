@@ -79,6 +79,9 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Card"
+                required:
+                  - time
+                  - deck
         "400":
           description: bad request
           content:
